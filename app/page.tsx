@@ -4,13 +4,14 @@ import { Shield, Lock, Server, Database, AlertTriangle, FileCode } from "lucide-
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { NewsletterForm } from "@/components/newsletter-form"
-import { db, blogPosts } from "@/lib/db"
+import { db, blogPosts, projects } from "@/lib/db"
 import { formatDate } from "@/lib/utils"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 
 export default async function Home() {
-  // Fetch the latest 3 blog posts with error handling
+  // Fetch the latest 3 blog posts and featured 3 projects with error handling
   let latestPosts: { id: string; slug: string; title: string; excerpt: string; coverImage?: string; createdAt: string }[] = []
+  let featuredProjects: { id: string; title: string; description: string; icon?: string; items?: any[]; createdAt: string }[] = []
   let dbError = false
 
   try {
@@ -22,8 +23,17 @@ export default async function Home() {
       coverImage: post.coverImage || undefined,
       createdAt: post.createdAt ? post.createdAt.toISOString() : ""
     }))
+
+    featuredProjects = (await db.select().from(projects).orderBy(projects.createdAt).limit(3)).map(p => ({
+      id: p.id.toString(),
+      title: p.title,
+      description: p.description,
+      icon: p.icon || undefined,
+      items: Array.isArray(p.items) ? p.items : [],
+      createdAt: p.createdAt ? p.createdAt.toISOString() : ""
+    }))
   } catch (error) {
-    console.error("Error fetching blog posts:", error)
+    console.error("Error fetching from database:", error)
     dbError = true
   }
 
@@ -329,32 +339,56 @@ export default async function Home() {
           </div>
 
           <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-3 lg:gap-12">
-            <Link href="/projects#project-1" className="group">
-              <Card className="overflow-hidden bg-background border-primary/20 transition-all duration-200 group-hover:border-primary/50 group-hover:shadow-md">
-                <CardHeader>
-                  <CardTitle>Security Audit Toolkit</CardTitle>
-                  <CardDescription>Automated checks and reporting for cloud and on-prem systems.</CardDescription>
-                </CardHeader>
-              </Card>
-            </Link>
+            {dbError || featuredProjects.length === 0 ? (
+              <>
+                <Link href="/projects#project-1" className="group">
+                  <Card className="overflow-hidden bg-background border-primary/20 transition-all duration-200 group-hover:border-primary/50 group-hover:shadow-md">
+                    <CardHeader>
+                      <CardTitle>Security Audit Toolkit</CardTitle>
+                      <CardDescription>Automated checks and reporting for cloud and on-prem systems.</CardDescription>
+                    </CardHeader>
+                  </Card>
+                </Link>
 
-            <Link href="/projects#project-2" className="group">
-              <Card className="overflow-hidden bg-background border-primary/20 transition-all duration-200 group-hover:border-primary/50 group-hover:shadow-md">
-                <CardHeader>
-                  <CardTitle>Pentest Automation Suite</CardTitle>
-                  <CardDescription>Repeatable engagement playbooks and result aggregation.</CardDescription>
-                </CardHeader>
-              </Card>
-            </Link>
+                <Link href="/projects#project-2" className="group">
+                  <Card className="overflow-hidden bg-background border-primary/20 transition-all duration-200 group-hover:border-primary/50 group-hover:shadow-md">
+                    <CardHeader>
+                      <CardTitle>Pentest Automation Suite</CardTitle>
+                      <CardDescription>Repeatable engagement playbooks and result aggregation.</CardDescription>
+                    </CardHeader>
+                  </Card>
+                </Link>
 
-            <Link href="/projects#project-3" className="group">
-              <Card className="overflow-hidden bg-background border-primary/20 transition-all duration-200 group-hover:border-primary/50 group-hover:shadow-md">
-                <CardHeader>
-                  <CardTitle>Threat Intelligence Dashboard</CardTitle>
-                  <CardDescription>Real-time indicators and correlation for SOC teams.</CardDescription>
-                </CardHeader>
-              </Card>
-            </Link>
+                <Link href="/projects#project-3" className="group">
+                  <Card className="overflow-hidden bg-background border-primary/20 transition-all duration-200 group-hover:border-primary/50 group-hover:shadow-md">
+                    <CardHeader>
+                      <CardTitle>Threat Intelligence Dashboard</CardTitle>
+                      <CardDescription>Real-time indicators and correlation for SOC teams.</CardDescription>
+                    </CardHeader>
+                  </Card>
+                </Link>
+              </>
+            ) : (
+              featuredProjects.map((proj) => (
+                <Link key={proj.id} href={`/projects/${proj.id}`} className="group">
+                  <Card className="overflow-hidden bg-background border-primary/20 transition-all duration-200 group-hover:border-primary/50 group-hover:shadow-md">
+                    <CardHeader>
+                      <CardTitle>{proj.title}</CardTitle>
+                      <CardDescription>{proj.description}</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      {proj.items && proj.items.length > 0 && (
+                        <ul className="space-y-1 text-sm text-muted-foreground">
+                          {proj.items.slice(0, 4).map((it: any, i: number) => (
+                            <li key={i}>{typeof it === 'string' ? it : JSON.stringify(it)}</li>
+                          ))}
+                        </ul>
+                      )}
+                    </CardContent>
+                  </Card>
+                </Link>
+              ))
+            )}
           </div>
 
           <div className="flex justify-center">
