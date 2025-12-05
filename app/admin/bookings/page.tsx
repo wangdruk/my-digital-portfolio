@@ -1,6 +1,35 @@
-import { db, bookings } from '@/lib/db'
+import { db, bookings, users } from '@/lib/db'
+import { currentUser } from '@clerk/nextjs'
+import { redirect } from 'next/navigation'
+import { eq } from 'drizzle-orm'
 
 export default async function BookingsAdmin() {
+  const user = await currentUser()
+  if (!user) {
+    return redirect('/sign-in')
+  }
+
+  // Check DB for user's role
+  let isAdmin = false
+  try {
+    const rows = await db.select().from(users).where(eq(users.clerkId, user.id))
+    if (rows && rows.length > 0) {
+      const u = rows[0]
+      isAdmin = u.role === 'admin'
+    }
+  } catch (err) {
+    console.error('Failed to lookup user role', err)
+  }
+
+  if (!isAdmin) {
+    return (
+      <div className="container py-12">
+        <h1 className="text-2xl font-bold">Access denied</h1>
+        <p className="text-muted-foreground mt-4">You do not have permission to view this page.</p>
+      </div>
+    )
+  }
+
   let rows: any[] = []
   try {
     rows = await db.select().from(bookings).orderBy(bookings.createdAt, 'desc')

@@ -5,15 +5,30 @@ export async function POST(request: Request) {
   try {
     const body = await request.json()
 
+    // Server-side validation
+    const name = typeof body.name === 'string' ? body.name.trim() : ''
+    const email = typeof body.email === 'string' ? body.email.trim() : ''
+    const message = typeof body.message === 'string' ? body.message.trim() : ''
+    const tourId = body.tourId ? String(body.tourId) : null
+
+    if (!name || !email) {
+      return new NextResponse(JSON.stringify({ ok: false, error: 'Name and email are required' }), { status: 400 })
+    }
+
+    // basic email format check
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+      return new NextResponse(JSON.stringify({ ok: false, error: 'Invalid email address' }), { status: 400 })
+    }
+
     const insert = await db
       .insert(bookings)
       .values({
-        name: body.name || '',
-        email: body.email || '',
-        message: body.message || '',
-        tourId: body.tourId || null,
+        name,
+        email,
+        message,
+        tourId,
       })
-      .returning();
+      .returning()
 
     const inserted = Array.isArray(insert) && insert.length > 0 ? insert[0] : null
 
