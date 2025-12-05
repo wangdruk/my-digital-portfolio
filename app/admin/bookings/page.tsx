@@ -1,18 +1,18 @@
 import { db, bookings, users } from '@/lib/db'
-import { currentUser } from '@clerk/nextjs'
+import { auth } from '@clerk/nextjs'
 import { redirect } from 'next/navigation'
 import { eq } from 'drizzle-orm'
 
 export default async function BookingsAdmin() {
-  const user = await currentUser()
-  if (!user) {
+  const { userId } = auth()
+  if (!userId) {
     return redirect('/sign-in')
   }
 
   // Check DB for user's role
   let isAdmin = false
   try {
-    const rows = await db.select().from(users).where(eq(users.clerkId, user.id))
+    const rows = await db.select().from(users).where(eq(users.clerkId, userId))
     if (rows && rows.length > 0) {
       const u = rows[0]
       isAdmin = u.role === 'admin'
