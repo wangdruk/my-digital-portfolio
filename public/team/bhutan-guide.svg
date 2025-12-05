@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#052e2e" />
+  <circle cx="140" cy="160" r="80" fill="#0ea5e9" />
+  <rect x="240" y="220" width="460" height="300" rx="24" fill="#0ea5e9" opacity="0.15" />
+  <text x="40" y="340" fill="#fff" font-size="28" font-family="sans-serif">Local Guide — Bhutan Mebar</text>
+</svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <linearGradient id="h" x1="0" x2="1"><stop offset="0%" stop-color="#0ea5e9"/><stop offset="100%" stop-color="#7c3aed"/></linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="#031024" />
+  <g fill="url(#h)" opacity="0.9">
+    <path d="M0 700 Q400 400 800 700 T1600 700 L1600 900 L0 900 Z" />
+  </g>
+  <text x="80" y="140" fill="#fff" font-size="64" font-family="sans-serif">Discover Bhutan with Bhutan Mebar</text>
+  <text x="80" y="200" fill="#cbd5e1" font-size="20" font-family="sans-serif">Curated cultural and nature tours, led by local experts.</text>
+</svg>
