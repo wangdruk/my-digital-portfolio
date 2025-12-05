@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Shield, X } from "lucide-react";
+import { Menu, Globe, X } from "lucide-react";
 import { ThemeToggle } from "./theme-toggle";
 import { usePathname } from "next/navigation";
 import { SignInButton, SignUpButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
@@ -18,9 +18,10 @@ export default function Navbar() {
   
   const navLinks = [
     { href: "/", label: "Home" },
+    { href: "/tours", label: "Tours" },
     { href: "/about", label: "About" },
+    { href: "/contact", label: "Contact" },
     { href: "/blog", label: "Blog" },
-    { href: "/projects", label: "Projects" },
   ];
   
   const adminLink = { 
@@ -33,8 +34,8 @@ export default function Navbar() {
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-2">
           <Link href="/" className="flex items-center gap-2 font-semibold">
-            <Shield className="h-6 w-6 text-primary" />
-            <span className="">CyberApp</span>
+            <Globe className="h-6 w-6 text-primary" />
+            <span className="">Bhutan Mebar</span>
           </Link>
         </div>        {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-5 text-sm font-medium">

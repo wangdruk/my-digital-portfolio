@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Shield } from "lucide-react"
+import { Globe } from "lucide-react"
 
 export function Footer() {
   return (
@@ -8,11 +8,11 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="space-y-4">
             <Link href="/" className="flex items-center gap-2">
-              <Shield className="h-6 w-6 text-primary" />
-              <span className="text-lg font-bold">CyberShield</span>
+              <Globe className="h-6 w-6 text-primary" />
+              <span className="text-lg font-bold">Bhutan Mebar</span>
             </Link>
             <p className="text-sm text-muted-foreground">
-              Professional cybersecurity services to protect your digital assets and infrastructure.
+              Bhutan-focused travel planning, curated cultural and nature tours, and bespoke itineraries.
             </p>
           </div>
           <div>
@@ -62,7 +62,7 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-8 pt-8 border-t text-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} CyberShield. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Bhutan Mebar. All rights reserved.</p>
         </div>
       </div>
     </footer>

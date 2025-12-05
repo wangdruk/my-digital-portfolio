@@ -1,3 +1,42 @@
+import Image from "next/image"
+import Link from "next/link"
+
+export default function AboutPage() {
+  return (
+    <div className="container py-12">
+      <div className="max-w-3xl mx-auto text-center">
+        <h1 className="text-3xl font-bold">About Bhutan Mebar</h1>
+        <p className="text-muted-foreground mt-4">A bespoke travel agency focused on authentic Bhutan experiences, led by local expert guides and operators.</p>
+      </div>
+
+      <div className="grid gap-8 md:grid-cols-2 mt-8 items-start">
+        <div>
+          <h2 className="text-xl font-semibold">Our Mission</h2>
+          <p className="text-muted-foreground mt-2">To curate meaningful travel that connects visitors with Bhutan's culture, people, and landscapes while supporting local communities and sustainable practices.</p>
+
+          <h3 className="mt-6 font-semibold">Our Promise</h3>
+          <ul className="list-disc ml-5 mt-2 text-sm text-muted-foreground">
+            <li>Local guides and community-first itineraries</li>
+            <li>Transparent pricing and inclusive experiences</li>
+            <li>Flexible booking and personalised services</li>
+          </ul>
+        </div>
+        <div>
+          <div className="overflow-hidden rounded-md">
+            <Image src="/team/bhutan-guide.jpg" width={800} height={600} alt="Bhutan guide" className="object-cover w-full h-64 rounded-md" />
+          </div>
+          <div className="mt-4">
+            <h4 className="font-semibold">Meet the Founder</h4>
+            <p className="text-sm text-muted-foreground mt-2">Bhutan Mebar has over a decade of experience creating itineraries across Bhutan. We prioritise authentic cultural immersion and respectful travel.</p>
+            <Link href="/contact">
+              <button className="mt-4 inline-flex items-center rounded-md bg-primary px-4 py-2 text-white">Contact Us</button>
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
 import { Award, GraduationCap, Briefcase, Calendar, CheckCircle } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import Image from "next/image"
