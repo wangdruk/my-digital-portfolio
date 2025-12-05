@@ -15,7 +15,7 @@ export const tours: Tour[] = [
     duration: "7 days",
     price: "$1,600",
     short: "Cultural highlights, monasteries, and valley treks around Thimphu and Paro.",
-    image: "/tours/bhutan-classic.jpg",
+    image: "/tours/bhutan-classic.svg",
     highlights: ["Paro Taktsang (Tiger's Nest)", "Thimphu city and national memorial chorten", "Punakha Dzong"],
   },
   {
@@ -24,7 +24,7 @@ export const tours: Tour[] = [
     duration: "10 days",
     price: "$2,800",
     short: "Highland passes, cultural homestays and guided hikes into remote valleys.",
-    image: "/tours/bhutan-adventure.jpg",
+    image: "/tours/bhutan-adventure.svg",
     highlights: ["Bumthang valleys", "Phobjikha wetlands", "Local homestays"],
   },
   {
@@ -33,7 +33,7 @@ export const tours: Tour[] = [
     duration: "5 days",
     price: "$1,200",
     short: "Retreat-style itinerary with hot stone baths, meditation and light hikes.",
-    image: "/tours/bhutan-wellness.jpg",
+    image: "/tours/bhutan-wellness.svg",
     highlights: ["Traditional hot stone bath", "Guided meditation sessions", "Nature walks"],
   },
 ]

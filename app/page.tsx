@@ -8,7 +8,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col">
-      <section className="w-full py-20 bg-[url('/hero-bhutan.jpg')] bg-cover bg-center relative">
+      <section className="w-full py-20 bg-[url('/hero-bhutan.svg')] bg-cover bg-center relative">
         <div className="absolute inset-0 bg-black/40"></div>
         <div className="container relative z-10 text-center text-white">
           <h1 className="text-4xl md:text-6xl font-bold">Bhutan Mebar</h1>

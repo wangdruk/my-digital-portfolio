@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1">
+      <stop offset="0%" stop-color="#0ea5e9" />
+      <stop offset="100%" stop-color="#8b5cf6" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="600" fill="#08121a" />
+  <g fill="url(#g)" opacity="0.9">
+    <circle cx="200" cy="400" r="220" />
+    <circle cx="600" cy="300" r="260" />
+    <circle cx="980" cy="380" r="200" />
+  </g>
+  <text x="50" y="80" fill="#fff" font-size="48" font-family="sans-serif">Bhutan Classic — 7 Days</text>
+  <text x="50" y="120" fill="#cbd5e1" font-size="20" font-family="sans-serif">Cultural highlights, monasteries, and valley treks</text>
+</svg>

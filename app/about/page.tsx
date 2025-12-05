@@ -23,7 +23,7 @@ export default function AboutPage() {
         </div>
         <div>
           <div className="overflow-hidden rounded-md">
-            <Image src="/team/bhutan-guide.jpg" width={800} height={600} alt="Bhutan guide" className="object-cover w-full h-64 rounded-md" />
+            <Image src="/team/bhutan-guide.svg" width={800} height={600} alt="Bhutan guide" className="object-cover w-full h-64 rounded-md" />
           </div>
           <div className="mt-4">
             <h4 className="font-semibold">Meet the Founder</h4>
