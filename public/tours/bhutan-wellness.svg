@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600">
-  <rect width="1200" height="600" fill="#011827" />
-  <g fill="#f97316" opacity="0.9">
-    <ellipse cx="300" cy="360" rx="200" ry="120" />
-    <ellipse cx="800" cy="300" rx="260" ry="140" />
-  </g>
-  <text x="50" y="80" fill="#fff" font-size="48" font-family="sans-serif">Bhutan Wellness — 5 Days</text>
-  <text x="50" y="120" fill="#cbd5e1" font-size="20" font-family="sans-serif">Retreat-style itinerary with hot stone baths and meditation</text>
-</svg>
