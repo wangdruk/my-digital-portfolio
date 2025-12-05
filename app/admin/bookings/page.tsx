@@ -1,24 +1,22 @@
-import fs from 'fs'
-import path from 'path'
+import { db, bookings } from '@/lib/db'
 
-export default function BookingsAdmin() {
-  const file = path.join(process.cwd(), 'data', 'bookings.json')
-  let bookings = []
+export default async function BookingsAdmin() {
+  let rows: any[] = []
   try {
-    const raw = fs.readFileSync(file, 'utf8')
-    bookings = JSON.parse(raw)
+    rows = await db.select().from(bookings).orderBy(bookings.createdAt, 'desc')
   } catch (err) {
-    bookings = []
+    console.error('Failed to load bookings', err)
+    rows = []
   }
 
   return (
     <div className="container py-12">
       <h1 className="text-2xl font-bold">Bookings</h1>
-      {bookings.length === 0 ? (
+      {rows.length === 0 ? (
         <p className="text-muted-foreground mt-4">No bookings yet.</p>
       ) : (
         <div className="mt-6 grid gap-4">
-          {bookings.map((b: any) => (
+          {rows.map((b: any) => (
             <div key={b.id} className="rounded-md border p-4">
               <div className="flex justify-between">
                 <div>

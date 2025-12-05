@@ -79,4 +79,14 @@ export const projects = pgTable("projects", {
   updatedAt: timestamp("updated_at").defaultNow(),
 });
 
+// Define bookings table schema for contact/booking submissions
+export const bookings = pgTable("bookings", {
+  id: serial("id").primaryKey(),
+  name: text("name").notNull(),
+  email: text("email").notNull(),
+  message: text("message"),
+  tourId: text("tour_id"),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
 // Contact submissions table removed as requested
