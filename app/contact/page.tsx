@@ -6,14 +6,39 @@ export default function ContactPage() {
   const [email, setEmail] = useState("")
   const [message, setMessage] = useState("")
   const [submitted, setSubmitted] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [error, setError] = useState("")
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    // Basic client-side handling: open email draft
-    const subject = encodeURIComponent("Tour enquiry from " + name)
-    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`)
-    window.location.href = `mailto:info@bhutanmebar.com?subject=${subject}&body=${body}`
-    setSubmitted(true)
+    setSubmitting(true)
+    setError("")
+
+    try {
+      const res = await fetch('/api/bookings', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, message, tourId: null })
+      })
+
+      if (!res.ok) {
+        const text = await res.text()
+        setError('Submission failed: ' + (text || res.statusText))
+        setSubmitting(false)
+        return
+      }
+
+      const data = await res.json()
+      if (data && data.ok) {
+        setSubmitted(true)
+      } else {
+        setError('Submission failed')
+      }
+    } catch (err: any) {
+      setError('Error submitting form')
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   return (
@@ -22,7 +47,7 @@ export default function ContactPage() {
       <p className="text-muted-foreground mt-2">Send us your travel preferences and we&apos;ll prepare a personalised itinerary.</p>
 
       {submitted ? (
-        <div className="mt-6 rounded-md bg-primary/10 p-4">Thank you — your email client opened. We look forward to connecting.</div>
+        <div className="mt-6 rounded-md bg-primary/10 p-4">Thank you — your inquiry was received. We will contact you shortly.</div>
       ) : (
         <form onSubmit={handleSubmit} className="mt-6 grid gap-4">
           <label className="flex flex-col">
@@ -37,8 +62,11 @@ export default function ContactPage() {
             <span className="text-sm">Message / Preferences</span>
             <textarea required value={message} onChange={(e) => setMessage(e.target.value)} className="mt-1 rounded-md border px-3 py-2 min-h-[120px]" />
           </label>
+          {error && <div className="text-destructive text-sm">{error}</div>}
           <div>
-            <button className="inline-flex items-center rounded-md bg-primary px-4 py-2 text-white">Send inquiry</button>
+            <button type="submit" disabled={submitting} className="inline-flex items-center rounded-md bg-primary px-4 py-2 text-white">
+              {submitting ? 'Sending…' : 'Send inquiry'}
+            </button>
           </div>
         </form>
       )}
