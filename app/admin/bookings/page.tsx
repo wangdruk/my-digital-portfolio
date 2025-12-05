@@ -1,5 +1,5 @@
 import { db, bookings, users } from '@/lib/db'
-import { auth } from '@clerk/nextjs'
+import { auth } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation'
 import { eq } from 'drizzle-orm'
 
