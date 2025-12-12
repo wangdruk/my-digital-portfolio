@@ -1,11 +1,16 @@
 "use client";
 
+export const dynamic = 'force-dynamic';
+
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Card } from "@/components/ui/card";
 import { TrendingUp, TrendingDown, Zap, Shield, BookOpen, BarChart3 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import dynamic from 'next/dynamic';
+// dynamically load chart to avoid server-side rendering issues
+const CryptoChart = dynamic(() => import('@/components/crypto-chart').then(m => m.CryptoChart), { ssr: false });
 
 export default function CryptoPage() {
   const [portfolio, setPortfolio] = useState([
@@ -13,6 +18,70 @@ export default function CryptoPage() {
     { symbol: "ETH", name: "Ethereum", amount: 5, value: 10250, change: -2.1 },
     { symbol: "ADA", name: "Cardano", amount: 100, value: 3200, change: 8.5 },
   ]);
+
+  // Trading state
+  const [cash, setCash] = useState(50000); // USD balance for simulated trading
+  const [orders, setOrders] = useState<any[]>([]);
+  const feeRate = 0.001; // 0.1%
+
+  // Helper: find market price by symbol
+  const findPrice = (symbol: string) => marketData.find(m => m.symbol === symbol)?.price ?? 0;
+
+  // Generate simple price history for a symbol (mock)
+  const generateHistory = (symbol: string) => {
+    const base = findPrice(symbol) || 100;
+    const pts = [];
+    let v = base;
+    for (let i = 30; i >= 0; i--) {
+      // small random walk
+      v = +(v * (1 + (Math.random() - 0.48) * 0.02)).toFixed(2);
+      pts.push({ date: `${i}d`, price: v });
+    }
+    return pts.reverse();
+  }
+
+  const [selectedSymbol, setSelectedSymbol] = useState(marketData[0].symbol);
+  const [tradeUsd, setTradeUsd] = useState<string>("1000");
+
+  const chartData = useMemo(() => generateHistory(selectedSymbol), [selectedSymbol]);
+
+  function placeOrder(side: 'BUY'|'SELL') {
+    const usd = Number(tradeUsd);
+    if (!usd || usd <= 0) return;
+    const price = findPrice(selectedSymbol);
+    const fee = +(usd * feeRate).toFixed(2);
+    const netUsd = side === 'BUY' ? usd + fee : usd - fee;
+    const qty = +(usd / price).toFixed(8);
+
+    if (side === 'BUY' && netUsd > cash) {
+      alert('Insufficient cash for this buy order');
+      return;
+    }
+
+    // Update cash and portfolio: simple behavior — adjust cash and portfolio amounts
+    if (side === 'BUY') setCash(prev => +(prev - netUsd).toFixed(2));
+    if (side === 'SELL') setCash(prev => +(prev + netUsd).toFixed(2));
+
+    setOrders(prev => [{ id: Date.now(), side, symbol: selectedSymbol, usd, price, fee, qty, time: new Date().toISOString() }, ...prev]);
+
+    // Update portfolio: find coin and update amount/value
+    setPortfolio(prev => {
+      const copy = [...prev];
+      const idx = copy.findIndex(p => p.symbol === selectedSymbol);
+      if (idx >= 0) {
+        if (side === 'BUY') {
+          copy[idx].amount = +(copy[idx].amount + qty).toFixed(8);
+        } else {
+          // for sell, reduce amount (simple, no checks)
+          copy[idx].amount = +(Math.max(0, copy[idx].amount - qty)).toFixed(8);
+        }
+        copy[idx].value = +(copy[idx].amount * price).toFixed(2);
+      } else if (side === 'BUY') {
+        copy.push({ symbol: selectedSymbol, name: selectedSymbol, amount: qty, value: +(qty * price).toFixed(2), change: 0 });
+      }
+      return copy;
+    });
+  }
 
   const [marketData] = useState([
     { symbol: "BTC", name: "Bitcoin", price: 43000, change: 5.2, marketCap: "$840B", volume: "$35B" },
@@ -176,6 +245,65 @@ export default function CryptoPage() {
               ))}
             </div>
           </TabsContent>
+
+          {/* Trading Widget */}
+          <div className="mt-8">
+            <Card className="p-6 mb-6">
+              <h3 className="text-lg font-semibold mb-4">Simulated Trading</h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
+                <div>
+                  <label className="text-sm text-muted-foreground">Asset</label>
+                  <select value={selectedSymbol} onChange={(e) => setSelectedSymbol(e.target.value)} className="w-full mt-2 p-2 border rounded">
+                    {marketData.map(m => <option key={m.symbol} value={m.symbol}>{m.name} ({m.symbol})</option>)}
+                  </select>
+                </div>
+                <div>
+                  <label className="text-sm text-muted-foreground">Amount (USD)</label>
+                  <input value={tradeUsd} onChange={(e) => setTradeUsd(e.target.value)} className="w-full mt-2 p-2 border rounded" />
+                </div>
+                <div className="flex gap-2">
+                  <Button className="w-full" onClick={() => placeOrder('BUY')}>Buy</Button>
+                  <Button variant="outline" className="w-full" onClick={() => placeOrder('SELL')}>Sell</Button>
+                </div>
+              </div>
+              <div className="mt-4 text-sm text-muted-foreground">Fee: {(feeRate*100).toFixed(2)}% per trade • Cash balance: ${cash.toLocaleString()}</div>
+            </Card>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+              <Card className="p-6">
+                <h4 className="font-semibold mb-4">Price Chart — {selectedSymbol}</h4>
+                <div style={{ width: '100%', height: 240 }}>
+                  <ResponsiveContainer>
+                    <LineChart data={chartData}>
+                      <XAxis dataKey="date" hide />
+                      <YAxis domain={['dataMin', 'dataMax']} hide />
+                      <Tooltip formatter={(value:number) => `$${value}`} />
+                      <Line type="monotone" dataKey="price" stroke="#7c3aed" dot={false} strokeWidth={2} />
+                    </LineChart>
+                  </ResponsiveContainer>
+                </div>
+              </Card>
+
+              <Card className="p-6">
+                <h4 className="font-semibold mb-4">Order History</h4>
+                <div className="space-y-3 text-sm">
+                  {orders.length === 0 && <div className="text-muted-foreground">No orders yet.</div>}
+                  {orders.map(o => (
+                    <div key={o.id} className="flex justify-between">
+                      <div>
+                        <div className="font-medium">{o.side} {o.symbol}</div>
+                        <div className="text-muted-foreground">{new Date(o.time).toLocaleString()}</div>
+                      </div>
+                      <div className="text-right">
+                        <div>${o.usd.toLocaleString()}</div>
+                        <div className="text-muted-foreground">Fee ${o.fee}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </Card>
+            </div>
+          </div>
 
           {/* Tutorials Tab */}
           <TabsContent value="tutorials" className="mt-6">
