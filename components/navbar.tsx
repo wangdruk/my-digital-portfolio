@@ -19,6 +19,7 @@ export default function Navbar() {
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/about", label: "About" },
+    { href: "/crypto", label: "Crypto Trading" },
     { href: "/contact", label: "Contact" },
     { href: "/blog", label: "Blog" },
   ];
