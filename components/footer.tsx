@@ -12,7 +12,7 @@ export function Footer() {
               <span className="text-lg font-bold">Bhutan Mebar</span>
             </Link>
             <p className="text-sm text-muted-foreground">
-              Bhutan-focused travel planning, curated cultural and nature tours, and bespoke itineraries.
+              Personal digital portfolio with security resources, projects, and writing.
             </p>
           </div>
           <div>
