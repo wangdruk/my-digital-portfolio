@@ -9,11 +9,8 @@ export default clerkMiddleware(async (auth, req) => {
   if (isProtectedRoute(req)) await auth.protect()
 })
 
-
-
-
 export const config = {
-  // Only run the Clerk middleware for explicitly protected routes and API endpoints.
+  // Only run the Clerk proxy for explicitly protected routes and API endpoints.
   // This avoids applying auth-related redirects to public pages like `/blog`.
   matcher: [
     '/admin(.*)',
