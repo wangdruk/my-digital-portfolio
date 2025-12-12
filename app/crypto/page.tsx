@@ -8,9 +8,9 @@ import { Card } from "@/components/ui/card";
 import { TrendingUp, TrendingDown, Zap, Shield, BookOpen, BarChart3 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import dynamic from 'next/dynamic';
+import dynamicImport from 'next/dynamic';
 // dynamically load chart to avoid server-side rendering issues
-const CryptoChart = dynamic(() => import('@/components/crypto-chart').then(m => m.CryptoChart), { ssr: false });
+const CryptoChart = dynamicImport(() => import('@/components/crypto-chart').then(m => m.CryptoChart), { ssr: false });
 
 export default function CryptoPage() {
   const [portfolio, setPortfolio] = useState([
@@ -273,14 +273,7 @@ export default function CryptoPage() {
               <Card className="p-6">
                 <h4 className="font-semibold mb-4">Price Chart — {selectedSymbol}</h4>
                 <div style={{ width: '100%', height: 240 }}>
-                  <ResponsiveContainer>
-                    <LineChart data={chartData}>
-                      <XAxis dataKey="date" hide />
-                      <YAxis domain={['dataMin', 'dataMax']} hide />
-                      <Tooltip formatter={(value:number) => `$${value}`} />
-                      <Line type="monotone" dataKey="price" stroke="#7c3aed" dot={false} strokeWidth={2} />
-                    </LineChart>
-                  </ResponsiveContainer>
+                  <CryptoChart data={chartData} symbol={selectedSymbol} />
                 </div>
               </Card>
 
