@@ -85,7 +85,6 @@ export const bookings = pgTable("bookings", {
   name: text("name").notNull(),
   email: text("email").notNull(),
   message: text("message"),
-  tourId: text("tour_id"),
   createdAt: timestamp("created_at").defaultNow(),
 });
 

@@ -9,7 +9,6 @@ export async function POST(request: Request) {
     const name = typeof body.name === 'string' ? body.name.trim() : ''
     const email = typeof body.email === 'string' ? body.email.trim() : ''
     const message = typeof body.message === 'string' ? body.message.trim() : ''
-    const tourId = body.tourId ? String(body.tourId) : null
 
     if (!name || !email) {
       return new NextResponse(JSON.stringify({ ok: false, error: 'Name and email are required' }), { status: 400 })
@@ -26,7 +25,6 @@ export async function POST(request: Request) {
         name,
         email,
         message,
-        tourId,
       })
       .returning()
 
