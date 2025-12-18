@@ -1,6 +1,8 @@
-import { Award, GraduationCap, Briefcase, Calendar, CheckCircle } from "lucide-react"
+import { Award, GraduationCap, Briefcase, Calendar, CheckCircle, ExternalLink } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
 import Image from "next/image"
+import Link from "next/link"
 
 export default function AboutPage() {
   return (
@@ -85,7 +87,28 @@ export default function AboutPage() {
             </div>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-5">
+            <Card className="bg-background border-primary/20">
+              <CardHeader className="pb-2">
+                <div className="bg-primary/10 p-3 w-fit rounded-lg mb-4">
+                  <Award className="h-6 w-6 text-primary" />
+                </div>
+                <CardTitle>Cisco Networking</CardTitle>
+                <CardDescription>Network Fundamentals</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <p className="text-sm text-muted-foreground">
+                  Cisco certified in networking fundamentals, routing, switching, and network security.
+                </p>
+                <Link href="/Cisco_certificate.pdf" target="_blank">
+                  <Button variant="outline" size="sm" className="w-full">
+                    <ExternalLink className="h-4 w-4 mr-2" />
+                    View Certificate
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
+
             <Card className="bg-background border-primary/20">
               <CardHeader className="pb-2">
                 <div className="bg-primary/10 p-3 w-fit rounded-lg mb-4">
