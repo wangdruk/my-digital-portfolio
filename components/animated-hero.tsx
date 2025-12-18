@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useRef, useMemo } from "react"
+import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { Shield, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -20,29 +20,26 @@ interface ParticleData {
   duration: number
 }
 
+// Generate particles outside of component to avoid React purity issues
+const generateParticles = (): ParticleData[] => {
+  const particles: ParticleData[] = []
+  for (let i = 0; i < 50; i++) {
+    particles.push({
+      x: (i * 37 + 13) % 100, // Deterministic pseudo-random using modular arithmetic
+      y: (i * 53 + 29) % 100,
+      animateY: -((i * 41 + 17) % 50) * 10,
+      duration: 10 + (i % 10),
+    })
+  }
+  return particles
+}
+
+const PARTICLES = generateParticles()
+
 export function AnimatedHero() {
   const [currentTitle, setCurrentTitle] = useState(0)
   const [displayText, setDisplayText] = useState("")
   const [isDeleting, setIsDeleting] = useState(false)
-  
-  // Generate particle data once using useMemo with stable seed
-  const particlesRef = useRef<ParticleData[] | null>(null)
-  
-  const particles = useMemo(() => {
-    if (particlesRef.current) return particlesRef.current
-    
-    const generated: ParticleData[] = []
-    for (let i = 0; i < 50; i++) {
-      generated.push({
-        x: (i * 37 + 13) % 100, // Deterministic pseudo-random
-        y: (i * 53 + 29) % 100,
-        animateY: -((i * 41 + 17) % 50) * 10,
-        duration: 10 + (i % 10),
-      })
-    }
-    particlesRef.current = generated
-    return generated
-  }, [])
 
   useEffect(() => {
     const title = titles[currentTitle]
@@ -74,7 +71,7 @@ export function AnimatedHero() {
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-gray-900 to-black overflow-hidden">
       {/* Animated background particles */}
       <div className="absolute inset-0">
-        {particles.map((particle, i) => (
+        {PARTICLES.map((particle, i) => (
           <motion.div
             key={i}
             className="absolute w-1 h-1 bg-primary/30 rounded-full"

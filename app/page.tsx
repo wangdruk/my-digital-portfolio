@@ -4,7 +4,7 @@ import { Shield, AlertTriangle, FileCode } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { NewsletterForm } from "@/components/newsletter-form"
-import { db, blogPosts, projects } from "@/lib/db"
+import { db, blogPosts } from "@/lib/db"
 import { formatDate } from "@/lib/utils"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
@@ -17,10 +17,8 @@ import { FloatingActionButton } from "@/components/floating-action-button"
 import { InteractiveProjectGrid } from "@/components/interactive-project-grid"
 
 export default async function Home() {
-  // Fetch the latest 3 blog posts and featured 3 projects with error handling
+  // Fetch the latest 3 blog posts with error handling
   let latestPosts: { id: string; slug: string; title: string; excerpt: string; coverImage?: string; createdAt: string }[] = []
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  let featuredProjects: { id: string; title: string; description: string; icon?: string; items?: unknown[]; createdAt: string }[] = []
   let dbError = false
 
   try {
@@ -31,15 +29,6 @@ export default async function Home() {
       excerpt: post.excerpt,
       coverImage: post.coverImage || undefined,
       createdAt: post.createdAt ? post.createdAt.toISOString() : ""
-    }))
-
-    featuredProjects = (await db.select().from(projects).orderBy(projects.createdAt).limit(3)).map(p => ({
-      id: p.id.toString(),
-      title: p.title,
-      description: p.description,
-      icon: p.icon || undefined,
-      items: Array.isArray(p.items) ? p.items : [],
-      createdAt: p.createdAt ? p.createdAt.toISOString() : ""
     }))
   } catch (error) {
     console.error("Error fetching from database:", error)
