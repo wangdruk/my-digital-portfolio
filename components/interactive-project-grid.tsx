@@ -2,10 +2,11 @@
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { ExternalLink, Github, Lock, ArrowRight } from "lucide-react"
+import { ExternalLink, Github, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
+import Image from "next/image"
 
 interface Project {
   id: string
@@ -23,7 +24,7 @@ const sampleProjects: Project[] = [
     id: "1",
     title: "Enterprise SIEM Dashboard",
     description: "Custom security information and event management dashboard with real-time threat visualization and automated alerting.",
-    image: "/projects/siem.png",
+    image: "/modern-soc-overview.png",
     category: "Security Tools",
     technologies: ["Python", "ElasticSearch", "React", "D3.js"],
     link: "#",
@@ -33,7 +34,7 @@ const sampleProjects: Project[] = [
     id: "2",
     title: "Vulnerability Scanner API",
     description: "Automated vulnerability scanning API that integrates with CI/CD pipelines for continuous security testing.",
-    image: "/projects/scanner.png",
+    image: "/digital-security-breach.png",
     category: "DevSecOps",
     technologies: ["Go", "Docker", "Kubernetes", "PostgreSQL"],
     link: "#",
@@ -43,7 +44,7 @@ const sampleProjects: Project[] = [
     id: "3",
     title: "Phishing Detection ML Model",
     description: "Machine learning model achieving 98.5% accuracy in detecting phishing emails and malicious URLs.",
-    image: "/projects/phishing.png",
+    image: "/interconnected-threat-analysis.png",
     category: "AI/ML Security",
     technologies: ["Python", "TensorFlow", "FastAPI", "Redis"],
     link: "#"
@@ -52,7 +53,7 @@ const sampleProjects: Project[] = [
     id: "4",
     title: "Zero Trust Architecture",
     description: "Designed and implemented zero trust security model for a Fortune 500 company with 50,000+ employees.",
-    image: "/projects/zerotrust.png",
+    image: "/secure-cloud-network.png",
     category: "Architecture",
     technologies: ["Azure AD", "Okta", "Terraform", "AWS"],
   },
@@ -60,7 +61,7 @@ const sampleProjects: Project[] = [
     id: "5",
     title: "Incident Response Playbook",
     description: "Comprehensive automated incident response system with SOAR integration and custom playbooks.",
-    image: "/projects/incident.png",
+    image: "/digital-watchtower.png",
     category: "SOC",
     technologies: ["Python", "Splunk", "XSOAR", "TheHive"],
     github: "#"
@@ -69,7 +70,7 @@ const sampleProjects: Project[] = [
     id: "6",
     title: "Secure Code Review Tool",
     description: "Static analysis tool for identifying security vulnerabilities in source code with custom rule engine.",
-    image: "/projects/codereview.png",
+    image: "/network-security-dashboard.png",
     category: "DevSecOps",
     technologies: ["TypeScript", "Semgrep", "GitHub Actions"],
     link: "#",
@@ -139,14 +140,15 @@ export function InteractiveProjectGrid({ projects = sampleProjects }: { projects
                 className="group relative"
               >
                 <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl overflow-hidden hover:border-primary/50 transition-all duration-300">
-                  {/* Project image placeholder */}
+                  {/* Project image */}
                   <div className="relative h-48 bg-gradient-to-br from-gray-700 to-gray-800 overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-indigo-500/20" />
-                    
-                    {/* Icon overlay */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <Lock className="h-16 w-16 text-white/20" />
-                    </div>
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
                     {/* Hover overlay */}
                     <motion.div
