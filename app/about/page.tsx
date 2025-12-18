@@ -91,12 +91,12 @@ export default function AboutPage() {
                 <div className="bg-primary/10 p-3 w-fit rounded-lg mb-4">
                   <Award className="h-6 w-6 text-primary" />
                 </div>
-                <CardTitle>CISSP</CardTitle>
-                <CardDescription>Certified Information Systems Security Professional</CardDescription>
+                <CardTitle>CompTIA Security+</CardTitle>
+                <CardDescription>Cybersecurity Fundamentals</CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground">
-                  Globally recognized certification demonstrating expertise across eight security domains.
+                  Industry-recognized certification covering network security, compliance, and operational security.
                 </p>
               </CardContent>
             </Card>
@@ -106,12 +106,12 @@ export default function AboutPage() {
                 <div className="bg-primary/10 p-3 w-fit rounded-lg mb-4">
                   <Award className="h-6 w-6 text-primary" />
                 </div>
-                <CardTitle>OSCP</CardTitle>
-                <CardDescription>Offensive Security Certified Professional</CardDescription>
+                <CardTitle>CEH</CardTitle>
+                <CardDescription>Certified Ethical Hacker</CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground">
-                  Hands-on penetration testing certification proving practical exploitation skills.
+                  Ethical hacking certification demonstrating penetration testing and vulnerability assessment skills.
                 </p>
               </CardContent>
             </Card>
@@ -121,12 +121,12 @@ export default function AboutPage() {
                 <div className="bg-primary/10 p-3 w-fit rounded-lg mb-4">
                   <Award className="h-6 w-6 text-primary" />
                 </div>
-                <CardTitle>CCSP</CardTitle>
-                <CardDescription>Certified Cloud Security Professional</CardDescription>
+                <CardTitle>AWS Security</CardTitle>
+                <CardDescription>Cloud Security Specialty</CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground">
-                  Specialized certification in cloud security architecture, design, and operations.
+                  Specialized certification in cloud security architecture, IAM, and AWS security services.
                 </p>
               </CardContent>
             </Card>
@@ -136,12 +136,12 @@ export default function AboutPage() {
                 <div className="bg-primary/10 p-3 w-fit rounded-lg mb-4">
                   <GraduationCap className="h-6 w-6 text-primary" />
                 </div>
-                <CardTitle>M.S. Cybersecurity</CardTitle>
-                <CardDescription>Stanford University</CardDescription>
+                <CardTitle>Digital Freelancing</CardTitle>
+                <CardDescription>Druk Holding & Investment</CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground">
-                  Advanced degree with focus on security architecture and threat intelligence.
+                  Professional training in digital skills, freelancing, and modern technology practices.
                 </p>
               </CardContent>
             </Card>
@@ -164,79 +164,79 @@ export default function AboutPage() {
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             <div className="space-y-4">
-              <h3 className="text-xl font-bold">Penetration Testing</h3>
+              <h3 className="text-xl font-bold">Security & Infrastructure</h3>
               <ul className="space-y-2">
                 <li className="flex items-center gap-2">
                   <CheckCircle className="h-4 w-4 text-primary" />
-                  <span>Web Application Testing</span>
+                  <span>Network Security & Firewalls</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <CheckCircle className="h-4 w-4 text-primary" />
-                  <span>Network Infrastructure Testing</span>
+                  <span>System Administration (Linux/Windows)</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <CheckCircle className="h-4 w-4 text-primary" />
-                  <span>Mobile Application Testing</span>
+                  <span>Server Configuration & Hardening</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <CheckCircle className="h-4 w-4 text-primary" />
-                  <span>Social Engineering Assessments</span>
+                  <span>SIEM & Security Monitoring</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <CheckCircle className="h-4 w-4 text-primary" />
-                  <span>Red Team Operations</span>
+                  <span>Vulnerability Assessment</span>
                 </li>
               </ul>
             </div>
 
             <div className="space-y-4">
-              <h3 className="text-xl font-bold">Security Architecture</h3>
+              <h3 className="text-xl font-bold">Cloud & DevSecOps</h3>
               <ul className="space-y-2">
+                <li className="flex items-center gap-2">
+                  <CheckCircle className="h-4 w-4 text-primary" />
+                  <span>AWS/Azure Cloud Security</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle className="h-4 w-4 text-primary" />
+                  <span>Container Security (Docker/K8s)</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle className="h-4 w-4 text-primary" />
+                  <span>CI/CD Pipeline Security</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle className="h-4 w-4 text-primary" />
+                  <span>Infrastructure as Code (Terraform)</span>
+                </li>
                 <li className="flex items-center gap-2">
                   <CheckCircle className="h-4 w-4 text-primary" />
                   <span>Zero Trust Architecture</span>
                 </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle className="h-4 w-4 text-primary" />
-                  <span>Cloud Security Design</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle className="h-4 w-4 text-primary" />
-                  <span>Network Security Design</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle className="h-4 w-4 text-primary" />
-                  <span>Identity & Access Management</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle className="h-4 w-4 text-primary" />
-                  <span>Secure SDLC Implementation</span>
-                </li>
               </ul>
             </div>
 
             <div className="space-y-4">
-              <h3 className="text-xl font-bold">Incident Response</h3>
+              <h3 className="text-xl font-bold">Web Development</h3>
               <ul className="space-y-2">
                 <li className="flex items-center gap-2">
                   <CheckCircle className="h-4 w-4 text-primary" />
-                  <span>Digital Forensics</span>
+                  <span>HTML5, CSS3, JavaScript</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <CheckCircle className="h-4 w-4 text-primary" />
-                  <span>Malware Analysis</span>
+                  <span>PHP & WordPress Development</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <CheckCircle className="h-4 w-4 text-primary" />
-                  <span>Threat Hunting</span>
+                  <span>React & Next.js</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <CheckCircle className="h-4 w-4 text-primary" />
-                  <span>Incident Response Planning</span>
+                  <span>WAMP/LAMP Stack Administration</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <CheckCircle className="h-4 w-4 text-primary" />
-                  <span>Breach Containment & Recovery</span>
+                  <span>Secure Web Application Development</span>
                 </li>
               </ul>
             </div>
@@ -264,17 +264,18 @@ export default function AboutPage() {
               </div>
               <div className="w-full md:w-[calc(50%-4rem)] bg-background p-5 rounded-lg border border-primary/20 shadow-sm">
                 <div className="flex items-center justify-between space-x-2 mb-1">
-                  <h3 className="font-bold text-lg">Principal Security Consultant</h3>
+                  <h3 className="font-bold text-lg">IT Officer</h3>
                   <time className="font-semibold text-primary flex items-center">
                     <Calendar className="h-4 w-4 mr-1" />
-                    2018 - Present
+                    Oct 2021 - 2023
                   </time>
                 </div>
-                <p className="text-muted-foreground mb-2">CyberShield Consulting</p>
+                <p className="text-muted-foreground mb-2">Absolute Trading Pvt. Ltd, Bhutan</p>
                 <p className="text-sm text-muted-foreground">
-                  Leading complex security assessments and penetration tests for Fortune 500 clients. Developing custom
-                  security frameworks and methodologies. Mentoring junior security consultants and delivering executive
-                  briefings on critical security findings.
+                  Delivered technical support to 50+ users, resolving hardware and software issues while providing 
+                  expert guidance on security protocols. Evaluated emerging hardware and software solutions, assessing 
+                  organizational compatibility before implementation. Maintained awareness of cutting-edge technologies 
+                  and recommended strategic upgrades to enhance system performance and security.
                 </p>
               </div>
             </div>
@@ -285,17 +286,18 @@ export default function AboutPage() {
               </div>
               <div className="w-full md:w-[calc(50%-4rem)] bg-background p-5 rounded-lg border border-primary/20 shadow-sm">
                 <div className="flex items-center justify-between space-x-2 mb-1">
-                  <h3 className="font-bold text-lg">Senior Security Engineer</h3>
+                  <h3 className="font-bold text-lg">ICT Officer</h3>
                   <time className="font-semibold text-primary flex items-center">
                     <Calendar className="h-4 w-4 mr-1" />
-                    2014 - 2018
+                    May 2018 - 2021
                   </time>
                 </div>
-                <p className="text-muted-foreground mb-2">SecureTech Solutions</p>
+                <p className="text-muted-foreground mb-2">All Bhutan Connection Pvt. Ltd, Bhutan</p>
                 <p className="text-sm text-muted-foreground">
-                  Designed and implemented security architectures for cloud migrations. Led vulnerability management
-                  program and security operations center (SOC) initiatives. Conducted internal security assessments and
-                  developed remediation strategies.
+                  Architected and maintained company website infrastructure with emphasis on security hardening 
+                  and 99.9% uptime reliability. Led network security upgrade initiative, implementing advanced 
+                  protocols to mitigate cyber threats across enterprise systems. Designed corporate marketing 
+                  materials and produced promotional video content to enhance company visibility.
                 </p>
               </div>
             </div>
@@ -306,17 +308,18 @@ export default function AboutPage() {
               </div>
               <div className="w-full md:w-[calc(50%-4rem)] bg-background p-5 rounded-lg border border-primary/20 shadow-sm">
                 <div className="flex items-center justify-between space-x-2 mb-1">
-                  <h3 className="font-bold text-lg">Security Analyst</h3>
+                  <h3 className="font-bold text-lg">ICT Assistant</h3>
                   <time className="font-semibold text-primary flex items-center">
                     <Calendar className="h-4 w-4 mr-1" />
-                    2010 - 2014
+                    Jul 2017 - 2018
                   </time>
                 </div>
-                <p className="text-muted-foreground mb-2">Global Financial Services</p>
+                <p className="text-muted-foreground mb-2">DrukCom Pvt. Ltd, Bhutan</p>
                 <p className="text-sm text-muted-foreground">
-                  Performed security monitoring and incident response for a major financial institution. Conducted
-                  vulnerability assessments and security awareness training. Assisted in developing security policies
-                  and procedures.
+                  Configured and optimized WAMP server environments, improving application performance by 30%. 
+                  Built trusted customer relationships through personalized technical support for Digital Television 
+                  services, achieving 95% satisfaction rating. Provided end-user support and troubleshooting for 
+                  network and system issues.
                 </p>
               </div>
             </div>
