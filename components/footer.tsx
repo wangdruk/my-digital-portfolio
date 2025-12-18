@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Shield } from "lucide-react"
+import { Shield, Linkedin, Github, Facebook, Instagram } from "lucide-react"
 
 export function Footer() {
   return (
@@ -14,6 +14,45 @@ export function Footer() {
             <p className="text-sm text-muted-foreground">
               IT Security Professional & Network Administrator with 5+ years of experience.
             </p>
+            {/* Social Media Links */}
+            <div className="flex gap-3 pt-2">
+              <a
+                href="https://www.linkedin.com/in/phuntshok-wangdruk/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-white transition-colors"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="h-5 w-5" />
+              </a>
+              <a
+                href="https://github.com/wangdruk"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-white transition-colors"
+                aria-label="GitHub"
+              >
+                <Github className="h-5 w-5" />
+              </a>
+              <a
+                href="https://www.facebook.com/share/17dymnTVM7/?mibextid=wwXIfrL"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-white transition-colors"
+                aria-label="Facebook"
+              >
+                <Facebook className="h-5 w-5" />
+              </a>
+              <a
+                href="https://www.instagram.com/druk__yul_?igsh=MXVzZzg4eml5M2JuZQ%3D%3D&utm_source=qr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-white transition-colors"
+                aria-label="Instagram"
+              >
+                <Instagram className="h-5 w-5" />
+              </a>
+            </div>
           </div>
           <div>
             <h3 className="text-sm font-medium mb-4">Contact</h3>
