@@ -2,8 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { MessageCircle, Mail, ArrowUp, X, Phone, Calendar, Send } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { MessageCircle, Mail, ArrowUp, X, Phone, Calendar } from "lucide-react"
 import Link from "next/link"
 
 export function FloatingActionButton() {

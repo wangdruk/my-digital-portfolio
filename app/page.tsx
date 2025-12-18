@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
-import { Shield, Lock, Server, Database, AlertTriangle, FileCode } from "lucide-react"
+import { Shield, AlertTriangle, FileCode } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { NewsletterForm } from "@/components/newsletter-form"
@@ -19,6 +19,7 @@ import { InteractiveProjectGrid } from "@/components/interactive-project-grid"
 export default async function Home() {
   // Fetch the latest 3 blog posts and featured 3 projects with error handling
   let latestPosts: { id: string; slug: string; title: string; excerpt: string; coverImage?: string; createdAt: string }[] = []
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   let featuredProjects: { id: string; title: string; description: string; icon?: string; items?: unknown[]; createdAt: string }[] = []
   let dbError = false
 

@@ -35,7 +35,7 @@ const stats = [
   }
 ]
 
-function AnimatedCounter({ value, suffix, delay }: { value: number; suffix: string; delay: number }) {
+function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {
   const [count, setCount] = useState(0)
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true })
@@ -115,7 +115,7 @@ export function StatsCounter() {
 
                 {/* Counter */}
                 <div className="text-4xl md:text-5xl font-bold text-white mb-2">
-                  <AnimatedCounter value={stat.value} suffix={stat.suffix} delay={index * 0.2} />
+                  <AnimatedCounter value={stat.value} suffix={stat.suffix} />
                 </div>
 
                 {/* Label */}
