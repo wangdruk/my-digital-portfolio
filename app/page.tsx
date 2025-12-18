@@ -8,7 +8,7 @@ import { db, blogPosts } from "@/lib/db"
 import { formatDate } from "@/lib/utils"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
-import { AnimatedHero } from "@/components/animated-hero"
+import { HeroSlider } from "@/components/hero-slider"
 import { InteractiveSkills } from "@/components/interactive-skills"
 import { StatsCounter } from "@/components/stats-counter"
 import { TestimonialsCarousel } from "@/components/testimonials-carousel"
@@ -37,8 +37,8 @@ export default async function Home() {
 
   return (
     <div className="flex flex-col">
-      {/* Animated Hero Section */}
-      <AnimatedHero />
+      {/* Hero Image Slider */}
+      <HeroSlider />
 
       {/* Floating Action Button */}
       <FloatingActionButton />
