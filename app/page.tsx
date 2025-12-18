@@ -191,7 +191,7 @@ export default async function Home() {
                       </div>
                       <div className="rounded-lg bg-background p-4 border border-primary/10">
                         <h4 className="font-semibold">Contact</h4>
-                        <p className="text-sm text-muted-foreground">security-team@example.com</p>
+                        <p className="text-sm text-muted-foreground">bhutan.infotech@gmail.com</p>
                       </div>
                     </div>
                   </div>

@@ -5,15 +5,35 @@ export function Footer() {
   return (
     <footer className="border-t bg-background">
       <div className="container py-8 md:py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
             <Link href="/" className="flex items-center gap-2">
               <Shield className="h-6 w-6 text-primary" />
-              <span className="text-lg font-bold">My Digital Protfilo</span>
+              <span className="text-lg font-bold">Phuntsho Wangchuk</span>
             </Link>
             <p className="text-sm text-muted-foreground">
-              Personal digital portfolio with security resources, projects, and writing.
+              IT Security Professional & Network Administrator with 5+ years of experience.
             </p>
+          </div>
+          <div>
+            <h3 className="text-sm font-medium mb-4">Contact</h3>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <a href="mailto:bhutan.infotech@gmail.com" className="text-muted-foreground hover:text-foreground flex items-center gap-2">
+                  <span>📧</span> bhutan.infotech@gmail.com
+                </a>
+              </li>
+              <li>
+                <a href="tel:+61415827848" className="text-muted-foreground hover:text-foreground flex items-center gap-2">
+                  <span>📱</span> +61 415 827 848
+                </a>
+              </li>
+              <li>
+                <span className="text-muted-foreground flex items-center gap-2">
+                  <span>📍</span> Australia
+                </span>
+              </li>
+            </ul>
           </div>
           <div>
             <h3 className="text-sm font-medium mb-4">Resources</h3>
@@ -62,7 +82,7 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-8 pt-8 border-t text-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} My Digital Protfilo. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Phuntsho Wangchuk. All rights reserved.</p>
         </div>
       </div>
     </footer>

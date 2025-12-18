@@ -26,7 +26,7 @@ export function FloatingActionButton() {
     {
       icon: Mail,
       label: "Email Me",
-      href: "mailto:contact@phuntshok.com",
+      href: "mailto:bhutan.infotech@gmail.com",
       color: "bg-blue-500 hover:bg-blue-600"
     },
     {
@@ -37,8 +37,8 @@ export function FloatingActionButton() {
     },
     {
       icon: Phone,
-      label: "Quick Chat",
-      href: "tel:+1234567890",
+      label: "Call Me",
+      href: "tel:+61415827848",
       color: "bg-purple-500 hover:bg-purple-600"
     }
   ]
