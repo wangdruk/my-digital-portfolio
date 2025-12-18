@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Globe, X } from "lucide-react";
+import { Menu, Shield, X } from "lucide-react";
 import { ThemeToggle } from "./theme-toggle";
 import { usePathname } from "next/navigation";
 import { SignInButton, SignUpButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
@@ -34,7 +34,7 @@ export default function Navbar() {
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-2">
           <Link href="/" className="flex items-center gap-2 font-semibold">
-            <Globe className="h-6 w-6 text-primary" />
+            <Shield className="h-6 w-6 text-primary" />
             <span className="">My Digital Protfilo</span>
           </Link>
         </div>        {/* Desktop Navigation */}
