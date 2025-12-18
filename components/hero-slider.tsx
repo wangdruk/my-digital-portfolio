@@ -30,6 +30,16 @@ const slides: Slide[] = [
     }
   },
   {
+    image: "/Cisco.png",
+    title: "Cisco Certified",
+    subtitle: "Network Security Expert",
+    description: "Certified in Cisco networking technologies with expertise in routing, switching, and enterprise network security solutions.",
+    cta: {
+      text: "View Certifications",
+      href: "/about"
+    }
+  },
+  {
     image: "/digital-shield.png",
     title: "Cybersecurity Excellence",
     subtitle: "Comprehensive Security Solutions",
