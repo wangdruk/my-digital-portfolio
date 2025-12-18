@@ -12,8 +12,7 @@ export default function AboutPage() {
             <div className="space-y-2">
               <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl text-white">About Me</h1>
               <p className="max-w-[700px] text-gray-400 md:text-xl/relaxed">
-                Cybersecurity professional with over 15 years of experience protecting organizations from evolving
-                threats.
+                IT Security Professional with 5+ years of experience in network security, infrastructure management, and cybersecurity operations.
               </p>
             </div>
           </div>
@@ -29,29 +28,29 @@ export default function AboutPage() {
           <div className="grid gap-10 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_500px]">
             <div className="flex flex-col justify-center space-y-6">
               <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">John Smith</h2>
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Phuntsho Wangchuk</h2>
                 <p className="text-xl text-muted-foreground">
-                  <span className="text-primary font-semibold">Cybersecurity Consultant & Penetration Tester</span>
+                  <span className="text-primary font-semibold">IT Security Professional & Network Administrator</span>
                 </p>
               </div>
               <div className="space-y-4">
                 <p className="text-muted-foreground">
-                  I am a dedicated cybersecurity professional with a passion for helping organizations strengthen their
-                  security posture and protect their valuable digital assets. With over 15 years of experience in the
-                  industry, I have worked with clients across various sectors, from financial services and healthcare to
-                  government and technology.
+                  Accomplished IT professional with over 5 years of progressive experience in network administration, 
+                  cybersecurity, and enterprise system infrastructure. I have demonstrated expertise in maintaining 
+                  secure computing environments and implementing advanced network security protocols across diverse 
+                  organizational settings.
                 </p>
                 <p className="text-muted-foreground">
-                  My approach combines technical expertise with a deep understanding of business needs, allowing me to
-                  develop security solutions that are both effective and practical. I believe that cybersecurity is not
-                  just about implementing technical controls, but also about building a culture of security awareness
-                  and resilience.
+                  My core competencies include cybersecurity best practices, server configuration and optimization, 
+                  WAMP server administration, and spearheading digital transformation initiatives. I have a proven 
+                  ability to diagnose complex technical challenges and architect robust security solutions that 
+                  protect critical infrastructure.
                 </p>
                 <p className="text-muted-foreground">
-                  Throughout my career, I have helped organizations identify and address security vulnerabilities,
-                  implement robust security programs, and respond effectively to security incidents. I am committed to
-                  staying at the forefront of the rapidly evolving cybersecurity landscape and sharing my knowledge with
-                  clients and the broader security community.
+                  Throughout my career, I have delivered technical support to organizations, led network security 
+                  upgrade initiatives, and implemented advanced protocols to mitigate cyber threats across enterprise 
+                  systems. I am passionate about staying at the forefront of the rapidly evolving cybersecurity 
+                  landscape and contributing to innovative organizations focused on protecting digital assets.
                 </p>
               </div>
             </div>
@@ -61,7 +60,7 @@ export default function AboutPage() {
                 <div className="relative overflow-hidden rounded-xl border border-primary/20 bg-background p-2">
                   <Image
                     src="/cyber-guardian.png"
-                    alt="John Smith - Cybersecurity Professional"
+                    alt="Phuntsho Wangchuk - IT Security Professional"
                     width={500}
                     height={500}
                     className="rounded-lg object-cover w-full h-full"
