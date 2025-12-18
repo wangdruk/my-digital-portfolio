@@ -9,7 +9,7 @@ export function Footer() {
           <div className="space-y-4">
             <Link href="/" className="flex items-center gap-2">
               <Globe className="h-6 w-6 text-primary" />
-              <span className="text-lg font-bold">Cryptro Traning</span>
+              <span className="text-lg font-bold">My Digital Protfilo</span>
             </Link>
             <p className="text-sm text-muted-foreground">
               Personal digital portfolio with security resources, projects, and writing.
@@ -62,7 +62,7 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-8 pt-8 border-t text-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} Cryptro Traning. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} My Digital Protfilo. All rights reserved.</p>
         </div>
       </div>
     </footer>
