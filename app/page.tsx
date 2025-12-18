@@ -7,7 +7,6 @@ import { NewsletterForm } from "@/components/newsletter-form"
 import { db, blogPosts } from "@/lib/db"
 import { formatDate } from "@/lib/utils"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
 import { HeroSlider } from "@/components/hero-slider"
 import { InteractiveSkills } from "@/components/interactive-skills"
 import { StatsCounter } from "@/components/stats-counter"
@@ -137,103 +136,6 @@ export default async function Home() {
       <TestimonialsCarousel />
 
       {/* Newsletter Section */}
-      {/* Security Plan Tabs Section */}
-      <section className="w-full py-12 md:py-20 lg:py-24 bg-background">
-        <div className="container px-4 md:px-6">
-          <div className="max-w-6xl mx-auto">
-            <div className="flex items-center justify-between mb-6">
-              <div>
-                <div className="inline-block rounded-lg bg-primary/10 px-3 py-1 text-sm text-primary">Security</div>
-                <h2 className="text-2xl font-bold mt-3">Security Plan</h2>
-                <p className="text-muted-foreground max-w-2xl mt-2">
-                  A concise, actionable security plan that outlines objectives, controls, and the
-                  implementation roadmap — designed for engineering and leadership teams.
-                </p>
-              </div>
-              <div>
-                <Link href="/security-plan">
-                  <Button variant="outline">View Full Plan</Button>
-                </Link>
-              </div>
-            </div>
-
-            <div className="bg-muted/20 rounded-lg p-4 md:p-6">
-              <Tabs defaultValue="overview">
-                <TabsList>
-                  <TabsTrigger value="overview">Overview</TabsTrigger>
-                  <TabsTrigger value="controls">Controls</TabsTrigger>
-                  <TabsTrigger value="roadmap">Roadmap</TabsTrigger>
-                </TabsList>
-
-                <TabsContent value="overview">
-                  <div className="grid gap-6 md:grid-cols-2 items-start">
-                    <div className="prose prose-invert">
-                      <h3>Overview</h3>
-                      <p>
-                        This plan prioritises high-impact risk reduction: inventory critical assets, harden
-                        systems, deploy monitoring, and validate backups. Focus on measurable controls and
-                        quarterly milestones to close the highest-risk gaps first.
-                      </p>
-                      <ul>
-                        <li>Asset discovery & classification</li>
-                        <li>Identity & access baseline (MFA, least-privilege)</li>
-                        <li>Continuous monitoring and logging</li>
-                      </ul>
-                    </div>
-                    <div className="space-y-3">
-                      <div className="rounded-lg bg-background p-4 border border-primary/10">
-                        <h4 className="font-semibold">Quick Facts</h4>
-                        <ul className="mt-2 text-sm text-muted-foreground">
-                          <li><strong>Recovery RTO:</strong> 1-4 hours (target)</li>
-                          <li><strong>Backup cadence:</strong> Daily snapshots</li>
-                          <li><strong>Patch SLA:</strong> 30 days for high-risk CVEs</li>
-                        </ul>
-                      </div>
-                      <div className="rounded-lg bg-background p-4 border border-primary/10">
-                        <h4 className="font-semibold">Contact</h4>
-                        <p className="text-sm text-muted-foreground">bhutan.infotech@gmail.com</p>
-                      </div>
-                    </div>
-                  </div>
-                </TabsContent>
-
-                <TabsContent value="controls">
-                  <div className="prose prose-invert">
-                    <h3>Key Controls</h3>
-                    <p>
-                      Implement layered controls across identity, network, application, and data. Use
-                      automation to reduce detection and response time.
-                    </p>
-                    <ul>
-                      <li>Identity: Enforce strong MFA, remove unused service accounts</li>
-                      <li>Network: Segment critical services and limit egress</li>
-                      <li>App: Static analysis, dependency scanning, and runtime protections</li>
-                      <li>Data: Encryption and data-loss prevention on sensitive stores</li>
-                    </ul>
-                  </div>
-                </TabsContent>
-
-                <TabsContent value="roadmap">
-                  <div className="prose prose-invert">
-                    <h3>Implementation Roadmap</h3>
-                    <p>
-                      Practical milestones for the next four quarters to improve security posture and
-                      measure progress with clear owners and success criteria.
-                    </p>
-                    <ol>
-                      <li>Q1 — Asset inventory, IAM baseline, patching program</li>
-                      <li>Q2 — Centralized logging & alerts, backup validation</li>
-                      <li>Q3 — DR runbook, incident response tabletop exercises</li>
-                      <li>Q4 — Compliance review and continuous improvement loop</li>
-                    </ol>
-                  </div>
-                </TabsContent>
-              </Tabs>
-            </div>
-
-          </div>
-        </div>
-      </section>
       <section className="w-full py-12 md:py-24 lg:py-32 bg-black relative overflow-hidden">
         <div className="container px-4 md:px-6 relative z-10">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
