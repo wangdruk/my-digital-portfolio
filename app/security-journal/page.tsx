@@ -47,8 +47,8 @@ export default function SecurityJournalPage() {
           <div>
             <h3 className="text-xl font-semibold">Mini Projects Completed</h3>
             <ol className="list-decimal ml-6 mt-2 text-muted-foreground space-y-2">
-              <li><strong>Let's Fork This</strong> — Forked and customized a template repository for portfolio foundation</li>
-              <li><strong>Let's Clone Repository</strong> — Cloned the forked repo locally and set up the development environment</li>
+              <li><strong>Let&apos;s Fork This</strong> — Forked and customized a template repository for portfolio foundation</li>
+              <li><strong>Let&apos;s Clone Repository</strong> — Cloned the forked repo locally and set up the development environment</li>
             </ol>
           </div>
           <div>
@@ -65,7 +65,7 @@ export default function SecurityJournalPage() {
             <h3 className="text-xl font-semibold">Security Implementation</h3>
             <ul className="list-disc ml-6 mt-2 text-muted-foreground space-y-1">
               <li>Environment variables protected (not in Git)</li>
-              <li>Server-side auth using Clerk's `auth()` method</li>
+              <li>Server-side auth using Clerk&apos;s `auth()` method</li>
               <li>Database connection via Neon with TLS encryption</li>
               <li>Middleware protecting admin routes</li>
             </ul>

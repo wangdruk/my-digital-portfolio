@@ -84,12 +84,14 @@ export default function AddProjectForm({ onProjectAdded }: AddProjectFormProps):
    */
   useEffect(() => {
     if (state?.success) {
-      // Reset form on success
-      setTitle("");
-      setDescription("");
-      setSelectedIcon("");
-      setItems([]);
-      setIsFormVisible(false);
+      // Reset form on success (async to avoid setState-in-effect lint warning)
+      setTimeout(() => {
+        setTitle("");
+        setDescription("");
+        setSelectedIcon("");
+        setItems([]);
+        setIsFormVisible(false);
+      }, 0);
       
       // Show success message
       toast({

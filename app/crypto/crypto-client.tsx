@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { Card } from "@/components/ui/card";
 import { TrendingUp, TrendingDown, Zap, Shield, BookOpen, BarChart3 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -10,8 +10,65 @@ import dynamicImport from 'next/dynamic';
 // dynamically load chart to avoid server-side rendering issues
 const CryptoChart = dynamicImport(() => import('@/components/crypto-chart').then(m => m.CryptoChart), { ssr: false });
 
+type PortfolioCoin = {
+  symbol: string;
+  name: string;
+  amount: number;
+  value: number;
+  change: number;
+};
+
+type MarketCoin = {
+  symbol: string;
+  name: string;
+  price: number;
+  change: number;
+  marketCap: string;
+  volume: string;
+};
+
+type OrderSide = "BUY" | "SELL";
+
+type Order = {
+  id: number;
+  side: OrderSide;
+  symbol: string;
+  usd: number;
+  price: number;
+  fee: number;
+  qty: number;
+  time: string;
+};
+
+type PricePoint = { date: string; price: number };
+
+function hashString(input: string): number {
+  let hash = 0;
+  for (let i = 0; i < input.length; i++) {
+    hash = (hash * 31 + input.charCodeAt(i)) >>> 0;
+  }
+  return hash;
+}
+
+function pseudoRandom(seed: number): number {
+  const x = Math.sin(seed) * 10000;
+  return x - Math.floor(x);
+}
+
+function generateHistory(basePrice: number, seedText: string): PricePoint[] {
+  const seedBase = hashString(seedText);
+  const pts: PricePoint[] = [];
+  let v = basePrice;
+  for (let i = 30; i >= 0; i--) {
+    const r = pseudoRandom(seedBase + i);
+    v = +(v * (1 + (r - 0.48) * 0.02)).toFixed(2);
+    pts.push({ date: `${i}d`, price: v });
+  }
+  return pts.reverse();
+}
+
 export default function CryptoClientPage() {
-  const [portfolio, setPortfolio] = useState([
+  const [portfolio, setPortfolio] = useState<PortfolioCoin[]>([
     { symbol: "BTC", name: "Bitcoin", amount: 0.5, value: 21500, change: 5.2 },
     { symbol: "ETH", name: "Ethereum", amount: 5, value: 10250, change: -2.1 },
     { symbol: "ADA", name: "Cardano", amount: 100, value: 3200, change: 8.5 },
@@ -19,11 +76,11 @@ export default function CryptoClientPage() {
 
   // Trading state
   const [cash, setCash] = useState(50000); // USD balance for simulated trading
-  const [orders, setOrders] = useState<any[]>([]);
+  const [orders, setOrders] = useState<Order[]>([]);
   const feeRate = 0.001; // 0.1%
 
   // Helper: find market price by symbol
-  const [marketData] = useState([
+  const [marketData] = useState<MarketCoin[]>([
     { symbol: "BTC", name: "Bitcoin", price: 43000, change: 5.2, marketCap: "$840B", volume: "$35B" },
     { symbol: "ETH", name: "Ethereum", price: 2050, change: -2.1, marketCap: "$246B", volume: "$18B" },
     { symbol: "SOL", name: "Solana", price: 185, change: 12.3, marketCap: "$75B", volume: "$4.2B" },
@@ -34,25 +91,15 @@ export default function CryptoClientPage() {
 
   const findPrice = (symbol: string) => marketData.find(m => m.symbol === symbol)?.price ?? 0;
 
-  // Generate simple price history for a symbol (mock)
-  const generateHistory = (symbol: string) => {
-    const base = findPrice(symbol) || 100;
-    const pts = [];
-    let v = base;
-    for (let i = 30; i >= 0; i--) {
-      // small random walk
-      v = +(v * (1 + (Math.random() - 0.48) * 0.02)).toFixed(2);
-      pts.push({ date: `${i}d`, price: v });
-    }
-    return pts.reverse();
-  }
-
   const [selectedSymbol, setSelectedSymbol] = useState(marketData[0].symbol);
   const [tradeUsd, setTradeUsd] = useState<string>("1000");
 
-  const chartData = useMemo(() => generateHistory(selectedSymbol), [selectedSymbol]);
+  const chartData = useMemo(() => {
+    const base = marketData.find(m => m.symbol === selectedSymbol)?.price ?? 100;
+    return generateHistory(base, selectedSymbol);
+  }, [marketData, selectedSymbol]);
 
-  function placeOrder(side: 'BUY'|'SELL') {
+  function placeOrder(side: OrderSide) {
     const usd = Number(tradeUsd);
     if (!usd || usd <= 0) return;
     const price = findPrice(selectedSymbol);

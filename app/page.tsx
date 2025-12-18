@@ -12,7 +12,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
 export default async function Home() {
   // Fetch the latest 3 blog posts and featured 3 projects with error handling
   let latestPosts: { id: string; slug: string; title: string; excerpt: string; coverImage?: string; createdAt: string }[] = []
-  let featuredProjects: { id: string; title: string; description: string; icon?: string; items?: any[]; createdAt: string }[] = []
+  let featuredProjects: { id: string; title: string; description: string; icon?: string; items?: unknown[]; createdAt: string }[] = []
   let dbError = false
 
   try {
@@ -477,7 +477,7 @@ export default async function Home() {
                     <CardContent>
                       {proj.items && proj.items.length > 0 && (
                         <ul className="space-y-1 text-sm text-muted-foreground">
-                          {proj.items.slice(0, 4).map((it: any, i: number) => (
+                          {proj.items.slice(0, 4).map((it: unknown, i: number) => (
                             <li key={i}>{typeof it === 'string' ? it : JSON.stringify(it)}</li>
                           ))}
                         </ul>

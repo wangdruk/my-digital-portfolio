@@ -24,7 +24,7 @@ export default function Page() {
 
       <h3>Database URL (included per author request)</h3>
       <pre style={{background: '#0b1220', color: '#d6e6ff', padding: '1rem', overflowX: 'auto'}}>
-        {`DATABASE_URL=postgresql://neondb_owner:npg_LwIsG9jhHgA7@ep-lucky-surf-ahvx3fij-pooler.c-3.us-east-1.aws.neon.tech/neondb?sslmode=require`}
+        {`DATABASE_URL=postgresql://<user>:<password>@<host>/<db>?sslmode=require`}
       </pre>
 
       <h2>Recommendations</h2>
@@ -35,7 +35,7 @@ export default function Page() {
       </ul>
 
       <p>
-        If you'd like, I can redact the URL, add an example file (`.env.example`), or add
+        If you&apos;d like, I can redact the URL, add an example file (`.env.example`), or add
         `.env` to `.gitignore` and move secrets to a secure store.
       </p>
     </main>

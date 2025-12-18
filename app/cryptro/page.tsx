@@ -50,8 +50,9 @@ export default function CryptroPage(): JSX.Element {
         if (!res.ok) throw new Error(`Coingecko error: ${res.status}`);
         const data: Coin[] = await res.json();
         if (mounted) setCoins(data);
-      } catch (err: any) {
-        if (mounted) setError(err.message ?? String(err));
+      } catch (err: unknown) {
+        const message = err instanceof Error ? err.message : String(err);
+        if (mounted) setError(message);
       } finally {
         if (mounted) setLoading(false);
       }
