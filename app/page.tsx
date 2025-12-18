@@ -8,6 +8,13 @@ import { db, blogPosts, projects } from "@/lib/db"
 import { formatDate } from "@/lib/utils"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
+import { AnimatedHero } from "@/components/animated-hero"
+import { InteractiveSkills } from "@/components/interactive-skills"
+import { StatsCounter } from "@/components/stats-counter"
+import { TestimonialsCarousel } from "@/components/testimonials-carousel"
+import { InteractiveTimeline } from "@/components/interactive-timeline"
+import { FloatingActionButton } from "@/components/floating-action-button"
+import { InteractiveProjectGrid } from "@/components/interactive-project-grid"
 
 export default async function Home() {
   // Fetch the latest 3 blog posts and featured 3 projects with error handling
@@ -40,71 +47,11 @@ export default async function Home() {
 
   return (
     <div className="flex flex-col">
-      {/* Hero Section */}
-      <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-black relative overflow-hidden">
-        <div className="container px-4 md:px-6 relative z-10">
-          <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
-            <div className="flex flex-col justify-center space-y-4">
-              <div className="space-y-2">
-                <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none bg-clip-text text-transparent bg-gradient-to-r from-primary to-indigo-500">
-                  Securing Your Digital Future
-                </h1>
-                <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                  Expert cybersecurity solutions to protect your organization from evolving threats. Penetration
-                  testing, security audits, and incident response services.
-                </p>
-              </div>
-              <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                {/* <Link href="/contact">
-                  <Button size="lg" className="bg-primary hover:bg-primary/90">
-                    Get Started
-                  </Button>
-                </Link> */}
-                <Link href="/projects">
-                  <Button size="lg" variant="outline">
-                    Learn More
-                  </Button>
-                </Link>
-              </div>
-            </div>
-            <div className="flex items-center justify-center">
-              <div className="relative w-full max-w-[500px] aspect-square">
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full blur-3xl opacity-20 animate-pulse"></div>
-                <div className="relative bg-black/40 backdrop-blur-sm border border-white/10 p-6 rounded-2xl shadow-2xl">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="space-y-2 col-span-2">
-                      <div className="h-2 w-[80%] bg-primary/20 rounded-full"></div>
-                      <div className="h-2 w-[60%] bg-primary/20 rounded-full"></div>
-                    </div>
-                    <div className="h-20 bg-primary/10 rounded-lg flex items-center justify-center">
-                      <Lock className="h-8 w-8 text-primary" />
-                    </div>
-                    <div className="h-20 bg-primary/10 rounded-lg flex items-center justify-center">
-                      <Shield className="h-8 w-8 text-primary" />
-                    </div>
-                    <div className="h-20 bg-primary/10 rounded-lg flex items-center justify-center">
-                      <Server className="h-8 w-8 text-primary" />
-                    </div>
-                    <div className="h-20 bg-primary/10 rounded-lg flex items-center justify-center">
-                      <Database className="h-8 w-8 text-primary" />
-                    </div>
-                    <div className="space-y-2 col-span-2 mt-2">
-                      <div className="h-2 w-[70%] bg-primary/20 rounded-full"></div>
-                      <div className="h-2 w-[50%] bg-primary/20 rounded-full"></div>
-                    </div>
-                  </div>
-                  <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-2/3 h-[1px] bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        {/* Animated background */}
-        <div className="absolute inset-0 bg-grid-white/5 bg-[size:50px_50px] opacity-10"></div>
-        <div className="absolute inset-0 bg-black bg-opacity-80"></div>
-        <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black to-transparent"></div>
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black to-transparent"></div>
-      </section>
+      {/* Animated Hero Section */}
+      <AnimatedHero />
+
+      {/* Floating Action Button */}
+      <FloatingActionButton />
 
       {/* Database Error Alert */}
       {dbError && (
@@ -118,6 +65,12 @@ export default async function Home() {
           </Alert>
         </div>
       )}
+
+      {/* Interactive Skills Section */}
+      <InteractiveSkills />
+
+      {/* Stats Counter Section */}
+      <StatsCounter />
 
       {/* Services Section */}
       <section className="w-full py-12 md:py-24 lg:py-32 bg-background">
@@ -187,120 +140,11 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Experience Section */}
-      <section className="w-full py-12 md:py-24 lg:py-32 bg-muted/40">
-        <div className="container px-4 md:px-6">
-          <div className="grid gap-6 lg:grid-cols-[1fr_600px] lg:gap-12 xl:grid-cols-[1fr_800px]">
-            <div className="flex flex-col justify-center space-y-4">
-              <div className="space-y-2">
-                <div className="inline-block rounded-lg bg-primary/10 px-3 py-1 text-sm text-primary">Experience</div>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                  7 Years of Cybersecurity Expertis
-                </h2>
-                <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed">
-                  With extensive experience in the cybersecurity industry, I&apos;ve helped organizations of all sizes
-                  protect their digital assets and infrastructure.
-                </p>
-              </div>
-              <ul className="grid gap-2 py-4">
-                <li className="flex items-center gap-2">
-                  <div className="rounded-full bg-primary/10 p-1">
-                    <Shield className="h-4 w-4 text-primary" />
-                  </div>
-                  <span>Certified Information Systems Security Professional (CISSP)</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <div className="rounded-full bg-primary/10 p-1">
-                    <Shield className="h-4 w-4 text-primary" />
-                  </div>
-                  <span>Certified Ethical Hacker (CEH)</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <div className="rounded-full bg-primary/10 p-1">
-                    <Shield className="h-4 w-4 text-primary" />
-                  </div>
-                  <span>Offensive Security Certified Professional (OSCP)</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <div className="rounded-full bg-primary/10 p-1">
-                    <Shield className="h-4 w-4 text-primary" />
-                  </div>
-                  <span>Certified Cloud Security Professional (CCSP)</span>
-                </li>
-              </ul>
-              <div>
-                <Link href="/about">
-                  <Button variant="outline">Learn More About My Experience</Button>
-                </Link>
-              </div>
-            </div>
-            <div className="flex items-center justify-center lg:justify-end">
-              <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
-                <div className="grid gap-4">
-                  <div className="overflow-hidden rounded-lg bg-primary/10 p-2 lg:p-4">
-                    <Image
-                      src="/digital-watchtower.png"
-                      width={300}
-                      height={300}
-                      alt="Security monitoring"
-                      className="aspect-square rounded-md object-cover"
-                    />
-                  </div>
-                  <div className="overflow-hidden rounded-lg bg-primary/10 p-2 lg:p-4">
-                    <Image
-                      src="/digital-fortress.png"
-                      width={300}
-                      height={300}
-                      alt="Network security"
-                      className="aspect-square rounded-md object-cover"
-                    />
-                  </div>
-                </div>
-                <div className="grid gap-4">
-                  <div className="overflow-hidden rounded-lg bg-primary/10 p-2 lg:p-4">
-                    <Image
-                      src="/cyber-guardian.png"
-                      width={300}
-                      height={300}
-                      alt="Cybersecurity professional"
-                      className="aspect-square rounded-md object-cover"
-                    />
-                  </div>
-                  <div className="overflow-hidden rounded-lg bg-primary/10 p-2 lg:p-4">
-                    <Image
-                      src="/modern-soc-overview.png"
-                      width={300}
-                      height={300}
-                      alt="Security operations center"
-                      className="aspect-square rounded-md object-cover"
-                    />
-                  </div>
-                </div>
-                <div className="grid gap-4">
-                  <div className="overflow-hidden rounded-lg bg-primary/10 p-2 lg:p-4">
-                    <Image
-                      src="/digital-security-breach.png"
-                      width={300}
-                      height={300}
-                      alt="Penetration testing"
-                      className="aspect-square rounded-md object-cover"
-                    />
-                  </div>
-                  <div className="overflow-hidden rounded-lg bg-primary/10 p-2 lg:p-4">
-                    <Image
-                      src="/interconnected-threat-analysis.png"
-                      width={300}
-                      height={300}
-                      alt="Cyber threat intelligence"
-                      className="aspect-square rounded-md object-cover"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Experience Section - Interactive Timeline */}
+      <InteractiveTimeline />
+
+      {/* Testimonials Section */}
+      <TestimonialsCarousel />
 
       {/* Newsletter Section */}
       {/* Security Plan Tabs Section */}
@@ -423,79 +267,10 @@ export default async function Home() {
       </section>
 
       {/* Recent Blog Posts */}
-      {/* Projects Section (featured) */}
-      <section className="w-full py-12 md:py-24 lg:py-32 bg-background">
-        <div className="container px-4 md:px-6">
-          <div className="flex flex-col items-center justify-center space-y-4 text-center">
-            <div className="space-y-2">
-              <div className="inline-block rounded-lg bg-primary/10 px-3 py-1 text-sm text-primary">Projects</div>
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Featured Projects</h2>
-              <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                A curated selection of projects showcasing security tooling, audits, and tooling integrations.
-              </p>
-            </div>
-          </div>
+      {/* Interactive Projects Section */}
+      <InteractiveProjectGrid />
 
-          <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-3 lg:gap-12">
-            {dbError || featuredProjects.length === 0 ? (
-              <>
-                <Link href="/projects#project-1" className="group">
-                  <Card className="overflow-hidden bg-background border-primary/20 transition-all duration-200 group-hover:border-primary/50 group-hover:shadow-md">
-                    <CardHeader>
-                      <CardTitle>Security Audit Toolkit</CardTitle>
-                      <CardDescription>Automated checks and reporting for cloud and on-prem systems.</CardDescription>
-                    </CardHeader>
-                  </Card>
-                </Link>
-
-                <Link href="/projects#project-2" className="group">
-                  <Card className="overflow-hidden bg-background border-primary/20 transition-all duration-200 group-hover:border-primary/50 group-hover:shadow-md">
-                    <CardHeader>
-                      <CardTitle>Pentest Automation Suite</CardTitle>
-                      <CardDescription>Repeatable engagement playbooks and result aggregation.</CardDescription>
-                    </CardHeader>
-                  </Card>
-                </Link>
-
-                <Link href="/projects#project-3" className="group">
-                  <Card className="overflow-hidden bg-background border-primary/20 transition-all duration-200 group-hover:border-primary/50 group-hover:shadow-md">
-                    <CardHeader>
-                      <CardTitle>Threat Intelligence Dashboard</CardTitle>
-                      <CardDescription>Real-time indicators and correlation for SOC teams.</CardDescription>
-                    </CardHeader>
-                  </Card>
-                </Link>
-              </>
-            ) : (
-              featuredProjects.map((proj) => (
-                <Link key={proj.id} href={`/projects/${proj.id}`} className="group">
-                  <Card className="overflow-hidden bg-background border-primary/20 transition-all duration-200 group-hover:border-primary/50 group-hover:shadow-md">
-                    <CardHeader>
-                      <CardTitle>{proj.title}</CardTitle>
-                      <CardDescription>{proj.description}</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      {proj.items && proj.items.length > 0 && (
-                        <ul className="space-y-1 text-sm text-muted-foreground">
-                          {proj.items.slice(0, 4).map((it: unknown, i: number) => (
-                            <li key={i}>{typeof it === 'string' ? it : JSON.stringify(it)}</li>
-                          ))}
-                        </ul>
-                      )}
-                    </CardContent>
-                  </Card>
-                </Link>
-              ))
-            )}
-          </div>
-
-          <div className="flex justify-center">
-            <Link href="/projects">
-              <Button variant="outline">View All Projects</Button>
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* Blog Section */}
       <section className="w-full py-12 md:py-24 lg:py-32 bg-background">
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
