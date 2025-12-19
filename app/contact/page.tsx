@@ -9,10 +9,10 @@ export default function ContactPage() {
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    // Open a simple mail draft to a neutral contact address — update as needed
-    const subject = encodeURIComponent("Contact from my-digital-portfolio: " + name)
+    // Open a simple mail draft to contact email
+    const subject = encodeURIComponent("Portfolio Contact: " + name)
     const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`)
-    window.location.href = `mailto:hello@my-digital-portfolio.dev?subject=${subject}&body=${body}`
+    window.location.href = `mailto:bhutan.infotech@gmail.com?subject=${subject}&body=${body}`
     setSubmitted(true)
   }
 
