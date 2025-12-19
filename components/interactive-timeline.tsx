@@ -19,58 +19,58 @@ const timelineData: TimelineItem[] = [
   {
     id: 1,
     year: "2023 - Present",
-    title: "Senior Security Consultant",
-    company: "CyberGuard Solutions",
-    location: "San Francisco, CA",
-    description: "Leading penetration testing engagements and security assessments for Fortune 500 clients.",
+    title: "IT Security Specialist",
+    company: "Bhutan InfoTech Solutions",
+    location: "Melbourne, Australia",
+    description: "Providing comprehensive IT security consulting and network infrastructure services for businesses across Australia.",
     achievements: [
-      "Conducted 20+ red team assessments with 95% critical finding rate",
-      "Developed custom exploitation frameworks reducing assessment time by 40%",
-      "Mentored junior security analysts and built internal training programs"
+      "Implemented enterprise network security solutions for 15+ clients",
+      "Reduced security incidents by 80% through proactive monitoring and threat detection",
+      "Designed and deployed secure cloud migration strategies for SMB clients"
     ],
-    skills: ["Red Teaming", "APT Simulation", "Leadership"]
+    skills: ["Network Security", "Cloud Security", "Security Consulting"]
   },
   {
     id: 2,
     year: "2021 - 2023",
-    title: "Security Analyst II",
-    company: "SecureNet Inc",
-    location: "Austin, TX",
-    description: "Performed vulnerability assessments and incident response across cloud and on-premise environments.",
+    title: "Network Security Administrator",
+    company: "TechSecure Australia",
+    location: "Sydney, Australia",
+    description: "Managed network security infrastructure and implemented security policies for enterprise clients.",
     achievements: [
-      "Reduced mean time to detect (MTTD) by 60% through SIEM optimization",
-      "Led incident response for 15+ security breaches with 100% containment",
-      "Implemented automated threat hunting playbooks"
+      "Deployed Cisco-based network security solutions across multi-site environments",
+      "Led security awareness training programs for 500+ employees",
+      "Achieved 99.9% uptime for critical security systems"
     ],
-    skills: ["SIEM", "Incident Response", "Threat Hunting"]
+    skills: ["Cisco Networking", "Firewall Management", "Security Policies"]
   },
   {
     id: 3,
     year: "2019 - 2021",
-    title: "Junior Penetration Tester",
-    company: "HackSecure Labs",
-    location: "Denver, CO",
-    description: "Conducted web application and network penetration testing for SMB clients.",
+    title: "Systems Administrator",
+    company: "Government IT Services",
+    location: "Thimphu, Bhutan",
+    description: "Administered IT infrastructure and implemented security measures for government networks.",
     achievements: [
-      "Discovered 50+ critical vulnerabilities across client infrastructures",
-      "Achieved OSCP and CEH certifications",
-      "Built automated reconnaissance toolkit used company-wide"
+      "Managed network infrastructure serving 200+ users across multiple departments",
+      "Implemented backup and disaster recovery solutions",
+      "Obtained Cisco CCNA certification with distinction"
     ],
-    skills: ["Web Pentesting", "Network Security", "Automation"]
+    skills: ["System Administration", "Network Management", "IT Support"]
   },
   {
     id: 4,
     year: "2017 - 2019",
-    title: "IT Security Intern",
-    company: "TechCorp Industries",
-    location: "Boulder, CO",
-    description: "Assisted with security monitoring, vulnerability scanning, and compliance audits.",
+    title: "IT Support Technician",
+    company: "Royal University of Bhutan",
+    location: "Thimphu, Bhutan",
+    description: "Provided technical support and maintained campus IT infrastructure.",
     achievements: [
-      "Automated vulnerability scanning reducing manual effort by 70%",
-      "Supported successful ISO 27001 certification audit",
-      "Created security awareness training materials"
+      "Supported 1000+ students and staff with IT services",
+      "Maintained computer labs and network connectivity across campus",
+      "Completed Bachelor's degree in Information Technology"
     ],
-    skills: ["Vulnerability Scanning", "Compliance", "Security Awareness"]
+    skills: ["Technical Support", "Hardware Maintenance", "Networking Basics"]
   }
 ]
 
@@ -90,7 +90,7 @@ export function InteractiveTimeline() {
             Professional <span className="text-primary">Journey</span>
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            A timeline of my growth and achievements in the cybersecurity field
+            From Bhutan to Australia — my path in IT security and network administration
           </p>
         </motion.div>
 
