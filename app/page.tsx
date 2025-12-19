@@ -14,20 +14,23 @@ import { TestimonialsCarousel } from "@/components/testimonials-carousel"
 import { InteractiveTimeline } from "@/components/interactive-timeline"
 import { FloatingActionButton } from "@/components/floating-action-button"
 import { InteractiveProjectGrid } from "@/components/interactive-project-grid"
+import { LatestInsights } from "@/components/latest-insights"
 
 export default async function Home() {
   // Fetch the latest 3 blog posts with error handling
-  let latestPosts: { id: string; slug: string; title: string; excerpt: string; coverImage?: string; createdAt: string }[] = []
+  let latestPosts: { id: number; slug: string; title: string; excerpt: string | null; coverImage: string | null; author: string | null; readTime: string | null; createdAt: Date }[] = []
   let dbError = false
 
   try {
-    latestPosts = (await db.select().from(blogPosts).orderBy(blogPosts.createdAt).limit(3)).map(post => ({
-      id: post.id.toString(),
+    latestPosts = (await db.select().from(blogPosts).orderBy(blogPosts.createdAt).limit(4)).map(post => ({
+      id: post.id,
       slug: post.slug,
       title: post.title,
       excerpt: post.excerpt,
-      coverImage: post.coverImage || undefined,
-      createdAt: post.createdAt ? post.createdAt.toISOString() : ""
+      coverImage: post.coverImage,
+      author: post.author,
+      readTime: post.readTime,
+      createdAt: post.createdAt || new Date()
     }))
   } catch (error) {
     console.error("Error fetching from database:", error)
@@ -162,57 +165,8 @@ export default async function Home() {
       {/* Interactive Projects Section */}
       <InteractiveProjectGrid />
 
-      {/* Blog Section */}
-      <section className="w-full py-12 md:py-24 lg:py-32 bg-background">
-        <div className="container px-4 md:px-6">
-          <div className="flex flex-col items-center justify-center space-y-4 text-center">
-            <div className="space-y-2">
-              <div className="inline-block rounded-lg bg-primary/10 px-3 py-1 text-sm text-primary">Blog</div>
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Latest Insights</h2>
-              <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Stay informed with our latest articles on cybersecurity trends, threats, and best practices.
-              </p>
-            </div>
-          </div>
-
-          {dbError ? (
-            <div className="mx-auto max-w-5xl py-12 text-center">
-              <p className="text-muted-foreground">Unable to load blog posts at this time. Please try again later.</p>
-            </div>
-          ) : (
-            <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-3 lg:gap-12">
-              {latestPosts.map((post) => (
-                <Link key={post.id} href={`/blog/${post.slug}`} className="group">
-                  <Card className="overflow-hidden bg-background border-primary/20 transition-all duration-200 group-hover:border-primary/50 group-hover:shadow-md">
-                    <div className="aspect-video w-full overflow-hidden">
-                      <Image
-                        src={post.coverImage || "/placeholder.svg?height=400&width=600&query=cybersecurity"}
-                        width={600}
-                        height={400}
-                        alt={post.title}
-                        className="object-cover transition-all duration-200 group-hover:scale-105"
-                      />
-                    </div>
-                    <CardHeader>
-                      <CardTitle>{post.title}</CardTitle>
-                      <CardDescription>{post.excerpt}</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-sm text-muted-foreground">{formatDate(post.createdAt)}</p>
-                    </CardContent>
-                  </Card>
-                </Link>
-              ))}
-            </div>
-          )}
-
-          <div className="flex justify-center">
-            <Link href="/blog">
-              <Button variant="outline">View All Articles</Button>
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* Latest Insights Section */}
+      <LatestInsights posts={latestPosts} error={dbError} />
     </div>
   )
 }
