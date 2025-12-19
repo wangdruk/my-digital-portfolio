@@ -22,63 +22,61 @@ interface Project {
 const sampleProjects: Project[] = [
   {
     id: "1",
-    title: "Enterprise SIEM Dashboard",
-    description: "Custom security information and event management dashboard with real-time threat visualization and automated alerting.",
+    title: "Network Security Implementation",
+    description: "Designed and deployed enterprise-grade network security infrastructure using Cisco technologies including firewalls, IDS/IPS, and VPN solutions.",
     image: "/modern-soc-overview.png",
-    category: "Security Tools",
-    technologies: ["Python", "ElasticSearch", "React", "D3.js"],
-    link: "#",
-    github: "#"
+    category: "Network Security",
+    technologies: ["Cisco ASA", "Firewall", "VPN", "IDS/IPS"],
+    link: "/blog"
   },
   {
     id: "2",
-    title: "Vulnerability Scanner API",
-    description: "Automated vulnerability scanning API that integrates with CI/CD pipelines for continuous security testing.",
+    title: "Security Monitoring Dashboard",
+    description: "Built a comprehensive security monitoring dashboard for real-time threat detection and incident response across multi-site environments.",
     image: "/digital-security-breach.png",
-    category: "DevSecOps",
-    technologies: ["Go", "Docker", "Kubernetes", "PostgreSQL"],
-    link: "#",
-    github: "#"
+    category: "Security Tools",
+    technologies: ["SIEM", "Log Analysis", "Splunk", "Python"],
+    link: "/blog"
   },
   {
     id: "3",
-    title: "Phishing Detection ML Model",
-    description: "Machine learning model achieving 98.5% accuracy in detecting phishing emails and malicious URLs.",
-    image: "/interconnected-threat-analysis.png",
-    category: "AI/ML Security",
-    technologies: ["Python", "TensorFlow", "FastAPI", "Redis"],
-    link: "#"
+    title: "Cloud Security Migration",
+    description: "Led secure cloud migration project for government services, implementing zero-trust architecture and compliance frameworks.",
+    image: "/secure-cloud-network.png",
+    category: "Cloud Security",
+    technologies: ["Azure", "AWS", "Terraform", "Security Policies"],
+    link: "/about"
   },
   {
     id: "4",
-    title: "Zero Trust Architecture",
-    description: "Designed and implemented zero trust security model for a Fortune 500 company with 50,000+ employees.",
-    image: "/secure-cloud-network.png",
-    category: "Architecture",
-    technologies: ["Azure AD", "Okta", "Terraform", "AWS"],
+    title: "Vulnerability Assessment Program",
+    description: "Developed and implemented an ongoing vulnerability assessment program reducing security risks by 75% across client infrastructure.",
+    image: "/interconnected-threat-analysis.png",
+    category: "Security Assessment",
+    technologies: ["Nessus", "OpenVAS", "Penetration Testing", "Reporting"],
+    link: "/blog"
   },
   {
     id: "5",
-    title: "Incident Response Playbook",
-    description: "Comprehensive automated incident response system with SOAR integration and custom playbooks.",
+    title: "Incident Response Framework",
+    description: "Created comprehensive incident response playbooks and trained teams on security breach containment and recovery procedures.",
     image: "/digital-watchtower.png",
     category: "SOC",
-    technologies: ["Python", "Splunk", "XSOAR", "TheHive"],
-    github: "#"
+    technologies: ["IR Playbooks", "Forensics", "SOAR", "Documentation"],
+    link: "/blog"
   },
   {
     id: "6",
-    title: "Secure Code Review Tool",
-    description: "Static analysis tool for identifying security vulnerabilities in source code with custom rule engine.",
+    title: "Security Awareness Training",
+    description: "Designed and delivered security awareness training programs for 500+ employees, reducing phishing susceptibility by 80%.",
     image: "/network-security-dashboard.png",
-    category: "DevSecOps",
-    technologies: ["TypeScript", "Semgrep", "GitHub Actions"],
-    link: "#",
-    github: "#"
+    category: "Training",
+    technologies: ["Training Materials", "Phishing Simulation", "Compliance", "Workshops"],
+    link: "/about"
   }
 ]
 
-const categories = ["All", "Security Tools", "DevSecOps", "AI/ML Security", "Architecture", "SOC"]
+const categories = ["All", "Network Security", "Security Tools", "Cloud Security", "Security Assessment", "SOC", "Training"]
 
 export function InteractiveProjectGrid({ projects = sampleProjects }: { projects?: Project[] }) {
   const [activeCategory, setActiveCategory] = useState("All")
